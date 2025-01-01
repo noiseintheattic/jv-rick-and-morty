@@ -37,7 +37,7 @@ public class CharacterClient {
     public List<CharacterResponseDataDto> getAllCharacters() {
         List<CharacterResponseDataDto> characterList = new ArrayList<>();
 
-        for (int i = 1; i < NUMBER_OF_CHARACTERS; i++) {
+        for (int i = 1; i <= NUMBER_OF_CHARACTERS; i++) {
             try {
                 String responseBody = sendRequest(i);
                 CharacterResponseDataDto characterDataDto = objectMapper
@@ -55,7 +55,7 @@ public class CharacterClient {
 
     public CartoonCharacter getRandomCharacter() {
         Random random = new Random();
-        int randomIndex = random.nextInt(NUMBER_OF_CHARACTERS - 1);
+        int randomIndex = random.nextInt(NUMBER_OF_CHARACTERS);
         long unsignedLong = Integer.toUnsignedLong(randomIndex);
         return characterService.getById(unsignedLong);
     }

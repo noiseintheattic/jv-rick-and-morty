@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
+    private final CharacterClient characterClient;
+
     @Autowired
-    private CharacterClient characterClient;
+    public Application(CharacterClient characterClient) {
+        this.characterClient = characterClient;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

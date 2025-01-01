@@ -2,6 +2,7 @@ package mate.academy.rickandmorty.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import mate.academy.rickandmorty.exception.CharacterNotFoundException;
 import mate.academy.rickandmorty.model.CartoonCharacter;
 import mate.academy.rickandmorty.repository.CharacterRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public CartoonCharacter getById(Long id) {
         CartoonCharacter characterById = characterRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new CharacterNotFoundException(
                         "Can't find character with id = " + id));
         return characterById;
     }
